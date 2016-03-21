@@ -20,3 +20,5 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 5. use ` php artisan serve ` to run project on localhost:8000
 
+notice : this version built with laravel user auth driver
+the other branch will build with with own-auth driver
