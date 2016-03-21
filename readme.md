@@ -16,7 +16,7 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 5. create database personal-website
 
-4. use ' php artisan migrate ' to create databases (first run mysql through wamp or ... )
+4. use ` php artisan migrate ` to create databases (first run mysql through wamp or ... )
 
-5. use ' php artisan serve ' to run project on localhost:8000
+5. use ` php artisan serve ` to run project on localhost:8000
 
