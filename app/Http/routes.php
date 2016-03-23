@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -26,5 +23,5 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-//    Route::get('/' , 'SiteController@index');
+
 });
