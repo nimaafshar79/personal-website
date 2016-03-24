@@ -1,5 +1,16 @@
 @import "../fonts/fonts.css";
 
 body {
-    font-family: IranSans, Yekan, Lato , serif !important;
+    font-family: IranSans, Yekan, "Source Sans Pro", serif !important;
+    font-size: 1.7em;
+}
+
+.lara-text {
+    color: #f4645f !important;
+}
+
+.logo-image {
+    height: 40px;
+    clear: none;
+    float: right;
 }

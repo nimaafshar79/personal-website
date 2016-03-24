@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\RegistrationRequest;
 use App\User;
-use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -21,7 +23,52 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            "username" => "required",
+            "password" => "required"
+        ]);
+        $data = [
+            "username" => $request->username,
+            "password" => $request->password,
+            "remember" => $request->has("remember")
+        ];
+        if ($this->attemptLogin($data)) {
+            return redirect("/");
+        } else {
+            return redirect()->back()->withErrors(["login" => "نام کاربری یا رمز عبور اشتباه است"])
+                ->withInput($request->only("username", "remember"));
+        }
+
+    }
+
+    public function attemptLogin(array $data)
+    {
+        return Auth::attempt(['username' => $data["username"], 'password' => $data["password"]], true);
+    }
+
+    public function showLoginForm(Request $request)
+    {
+        return view('auth.login');
+    }
+
+    public function register(RegistrationRequest $request)
+    {
+        $user = $this->create([
+            "name" => $request->name,
+            "username" => $request->username,
+            "password" => $request->password
+        ]);
+
+        Auth::login($user);
+        return redirect($this->redirectTo);
+    }
+
+    public function showRegistrationForm(Request $request)
+    {
+        return view('auth.register');
+    }
 
     /**
      * Where to redirect users after login / registration.
@@ -37,36 +84,27 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-    }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect($this->redirectTo);
     }
 }

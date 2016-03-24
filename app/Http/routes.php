@@ -23,5 +23,38 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+    //Site Controller Route
+    Route::get("index", "SiteController@index");
+    Route::get("/", "SiteController@index");
+    Route::get("index.php", "SiteController@index");
 
+    Route::get("information", "SiteController@information");
+    Route::get("contact", "SiteController@contact");
+    //Auth Routes
+    Route::group(["middleware" => ["guest"]], function () {
+        Route::post("login", "Auth\\AuthController@login");
+        Route::get("login", "Auth\\AuthController@showLoginForm");
+        Route::get("register", "Auth\\AuthController@showRegistrationForm");
+        Route::post("register", "Auth\\AuthController@register");
+    });
+    Route::any("logout", "Auth\\AuthController@logout");
+
+    //admin Routes
+    Route::get("users", [
+        "uses" => "UserController@userList",
+        "as" => "userList",
+        "middleware" => ["auth", "admin"]
+    ]);
+
+    //Blog Routes
+    Route::get("posts", "BlogController@all");
+    Route::get("articles", "BlogController@all");
+    Route::get("blog", "BlogController@all");
+
+    Route::group(["middleware" => ["auth"]], function () {
+        Route::get("article/create", "BlogController@showAddForm");
+        Route::get("post/create", "BlogController@showAddForm");
+        Route::post("article" , "BlogController@store");
+        Route::post("post" , "BlogController@store");
+    });
 });

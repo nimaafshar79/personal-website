@@ -1,8 +1,20 @@
 @font-face {
     font-family: 'IranSans';
-    src: url("iransans.ttf");
+    src: url("iran_sans.woff");
 }
 @font-face {
     font-family: 'Yekan';
     src: url("Yekan.ttf");
+}
+@font-face {
+    font-family: 'Duel';
+    src: url("ADuel.ttf");
+}
+@font-face {
+    font-family: 'Ghasem';
+    src: url("AGhasem.ttf");
+}
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url("Lato-Regular.ttf");
 }
