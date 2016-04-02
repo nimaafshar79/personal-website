@@ -14,7 +14,7 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 
 3. go to project directory through command or bash(gitbash recommended)
 
-5. create database personal-website
+5. create database ` personal_website `
 
 4. use ` php artisan migrate ` to create databases (first run mysql through wamp or ... )
 
