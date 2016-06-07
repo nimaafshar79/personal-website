@@ -30,6 +30,6 @@ class AdminAuthorize
 
     public function isAdmin(User $user)
     {
-        return (Auth::user()->id == $this->adminId && Auth::user()->username == $this->adminUsername);
+        return (Auth::user()->username == $this->adminUsername);
     }
 }

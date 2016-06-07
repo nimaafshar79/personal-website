@@ -26,7 +26,6 @@ Route::group(['middleware' => ['web']], function () {
     //Site Controller Route
     Route::get("index", "SiteController@index");
     Route::get("/", "SiteController@index");
-    Route::get("index.php", "SiteController@index");
 
     Route::get("information", "SiteController@information");
     Route::get("contact", "SiteController@contact");
@@ -46,6 +45,7 @@ Route::group(['middleware' => ['web']], function () {
         "middleware" => ["auth", "admin"]
     ]);
 
+    Route::get("gallery" , "GalleryController@index");
     //Blog Routes
     Route::get("posts", "BlogController@all");
     Route::get("articles", "BlogController@all");
@@ -56,5 +56,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get("post/create", "BlogController@showAddForm");
         Route::post("article" , "BlogController@store");
         Route::post("post" , "BlogController@store");
+        Route::get("profile" , "UserController@profile");
+        Route::post("profile" ,"UserController@profileSubmit");
+        Route::get("user/delete" , "UserController@delete");
     });
 });

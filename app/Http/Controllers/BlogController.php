@@ -20,6 +20,7 @@ class BlogController extends Controller
     public function showAddForm(Request $request)
     {
         return view("blog.new");
+        
     }
 
     public function all(Request $request)

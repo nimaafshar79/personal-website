@@ -32,13 +32,13 @@ class SiteController extends Controller
             [
                 "name" => "outlook",
                 "id" => "nimaafshar79@outlook.com",
-                "link" => "http://www.outlook.com",
+                "link" => "mailto:nimaafshar79@outlook.com",
                 "image" => "outlook.png"
             ],
             [
                 "name" => "gmail",
                 "id" => "nimaafshar79@gmail.com",
-                "link" => "http://www.gmail.com",
+                "link" => "mailto:nimaafshar79@gmail.com",
                 "image" => "gmail.png"
             ],
             [
@@ -47,7 +47,12 @@ class SiteController extends Controller
                 "link" => "http://plus.google.com/nimaafshar79",
                 "image" => "plus.png"
             ],
-
+            [
+                "name" => "instagram",
+                "id" => "thenimaafshar",
+                "link" => "https://www.instagram.com/thenimaafshar/",
+                "image" => "instagram.png"
+            ],
         ];
         return view("contact", compact('contact_ways'));
     }

@@ -35,7 +35,7 @@ class AuthController extends Controller
             "remember" => $request->has("remember")
         ];
         if ($this->attemptLogin($data)) {
-            return redirect("/");
+            return redirect("profile");
         } else {
             return redirect()->back()->withErrors(["login" => "نام کاربری یا رمز عبور اشتباه است"])
                 ->withInput($request->only("username", "remember"));
@@ -75,7 +75,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = 'profile';
 
     /**
      * Create a new authentication controller instance.

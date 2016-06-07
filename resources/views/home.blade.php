@@ -7,7 +7,7 @@
             </h3>
             <ul style="min-width: 300px;">
                 <li>
-                    <a href="{{url("blog")}}">
+                    <a href="{{url("/blog")}}">
                         وبلاگ
                     </a>
                 </li>
@@ -44,6 +44,16 @@
                 <li>
                     <a href="{{url("users")}}">
                         دیدن لیست کاربران (فقط برای ادمین)
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("profile")}}">
+                        صفحه ی پروفایل
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url("gallery")}}">
+                        گالری
                     </a>
                 </li>
             </ul>

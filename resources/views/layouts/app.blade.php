@@ -13,7 +13,8 @@
             <!-- Styles -->
     {!! Html::style("css/bootstrap.min.css") !!}
     {!! Html::style("css/custom.css") !!}
-
+    {!! Html::script("js/jquery.min.js") !!}
+    {!! Html::script("js/bootstrap.min.js") !!}
     <style>
 
         .fa-btn {
@@ -34,7 +35,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{url('index.php')}}">
+            <a class="navbar-brand" href="{{url('/')}}">
                 <div style="text-align: right;direction: rtl;margin-top: -10px;font-family: Ghasem;">
                     نیما
                     <br/>
@@ -59,6 +60,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{url("article/create")}}">نوشتن پست</a></li>
                             <li role="separator" class="divider"></li>
+                            <li><a href="{{url("profile")}}">پروفایل</a> </li>
                             <li><a href="{{url("logout")}}">خروج</a></li>
                         </ul>
                     </li>
